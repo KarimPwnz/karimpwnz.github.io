@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About
-image: 'https://pbs.twimg.com/profile_images/1061346827344232448/dk_e05cd_400x400.jpg'
+image: '/images/pages/about.jpeg'
 ---
 
 ## Contributions & Publications
