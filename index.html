@@ -2,11 +2,18 @@
 layout: default
 ---
 
+{% assign post_count = site.posts | size %}
+
 <div class='o-wrapper'>
   <div class='o-grid'>
-    {% for post in paginator.posts %}
-      {% include post-card.liquid %}
-    {% endfor %}
+    {% if post_count != 0 %}
+        {% for post in paginator.posts %}
+          {% include post-card.liquid %}
+        {% endfor %}
+    {% else %}
+        {% assign about_page = site.pages | where: "name", "about.md" %}
+        {{ about_page }}
+    {% endif %}
   </div>
 
   <div class='o-grid'>
