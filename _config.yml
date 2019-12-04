@@ -12,9 +12,9 @@ description: ''
 baseurl:     '' # The subpath of your site, e.g. /blog
 url:         'https://karimrahal.com/' # The base hostname & protocol for your site
 twitter:     'https://twitter.com/karimpwnz'
-github:      ''
-instagram:   ''
-facebook:    ''
+github:      
+instagram:   
+facebook:    
 
 markdown:  kramdown
 permalink: pretty
