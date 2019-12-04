@@ -3,7 +3,7 @@ layout: page
 title: About
 ---
 
-## Contributions & Publications
+### Contributions & Publications
 
 -   [“CI Knew There Would Be Bugs Here” — Exploring Continuous Integration Services as a Bug Bounty Hunter](https://edoverflow.com/2019/ci-knew-there-would-be-bugs-here/)
 -   [Employee's GitHub Token Found In Travis CI Build Logs](https://hackerone.com/reports/496937)
@@ -11,7 +11,7 @@ title: About
 -   [Stored XSS-ing Millions Of Sites Through HTML Comment Box](https://labs.detectify.com/2017/01/18/stored-xss-ing-millions-of-sites-through-html-comment-box/)
 -   [Guest blog: Karim Rahal on a Spotify playlist hack](https://blog.detectify.com/2016/01/26/guest-blog-karim-rahal-on-a-spotify-playlist-hack)
 
-## Press
+### Press
 
 -   [CI build logs continue to expose company secrets](https://www.zdnet.com/article/ci-build-logs-continue-to-expose-company-secrets/) (ZDNet)
 -   [How a popular website plugin became a serious security liability](https://thenextweb.com/security/2017/01/22/how-a-popular-website-plugin-became-a-serious-security-liability/) (TheNextWeb)
