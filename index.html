@@ -2,10 +2,9 @@
 layout: default
 ---
 
-{% assign post_count = site.posts | size %}
-
 <div class='o-wrapper'>
   <div class='o-grid'>
+    {% assign post_count = site.posts | size %}
     {% if post_count != 0 %}
         {% for post in paginator.posts %}
           {% include post-card.liquid %}
@@ -19,7 +18,6 @@ layout: default
         </article>
     {% endif %}
   </div>
-
   <div class='o-grid'>
     {% include pagination.html %}
   </div>
