@@ -12,7 +12,11 @@ layout: default
         {% endfor %}
     {% else %}
         {% assign about_page = site.pages | where: "name", "about.md" %}
-        {{ about_page }}
+        <article class='c-post'>
+            <div class='c-content'>
+                {{ about_page }}
+            </div>
+        </article>
     {% endif %}
   </div>
 
