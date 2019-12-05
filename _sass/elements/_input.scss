@@ -14,7 +14,7 @@ textarea {
   width: 100%;
   padding: $base-spacing-unit;
 
-  border: 1px solid $color-border;
+  border: .5px solid $color-border;
   border-radius: 0;
   outline: none;
   background-color: $color-white;
@@ -24,6 +24,6 @@ textarea {
   transition: $global-transition;
 
   @include attention() {
-    border: 1px solid $input-border-focused;
+    border: .5px solid $input-border-focused;
   }
 }
