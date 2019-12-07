@@ -9,6 +9,10 @@
   text-align: center;
 }
 
+.newsletter h1 {
+    font-size: triple($font-size-tiny);
+}
+
 .newsletter button {
     margin: $base-spacing-unit;
 }
