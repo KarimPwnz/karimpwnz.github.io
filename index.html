@@ -2,14 +2,19 @@
 layout: default
 ---
 
-<div class='o-wrapper'>
-  <div class='o-grid'>
-    {% for post in paginator.posts %}
-      {% include post-card.liquid %}
-    {% endfor %}
+{% assign post_count = site.posts | size %}
+{% if post_count == 0 %}
+  {% assign about_page = site.pages | where: 'name', 'about.md' %}
+  <meta http-equiv='Refresh' content='0; url={{ about_page[0].url }}'>
+{% else %}
+  <div class='o-wrapper'>
+    <div class='o-grid'>
+      {% for post in paginator.posts %}
+        {% include post-card.liquid %}
+      {% endfor %}
+    </div>
+    <div class='o-grid'>
+      {% include pagination.html %}
+    </div>
   </div>
-
-  <div class='o-grid'>
-    {% include pagination.html %}
-  </div>
-</div>
+{% endif %}

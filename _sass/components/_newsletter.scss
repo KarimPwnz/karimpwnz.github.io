@@ -1,0 +1,18 @@
+/*------------------------------------*\
+  Components > Newsletter
+\*------------------------------------*/
+
+.newsletter {
+  padding: double($base-spacing-unit);
+  background-color: $bg-color-gray;
+  margin-top: double($base-spacing-unit);
+  text-align: center;
+}
+
+.newsletter h1 {
+    font-size: triple($font-size-tiny);
+}
+
+.newsletter button {
+    margin: $base-spacing-unit;
+}

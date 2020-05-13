@@ -4,12 +4,19 @@
 
 .c-nav {
   &__item {
-    font-size: $font-size-medium;
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
   }
 
   &__link {
-    display: block;
+    font-size: $font-size-base;
+    font-weight: $font-weight-bolder;
     transition: $global-transition;
+
+    @include attention() {
+      color: $color-brand;
+      text-decoration: none;
+    }
 
     &--current {
       color: $color-brand;
@@ -19,9 +26,10 @@
       }
     }
 
+  }
+
     @include attention() {
       color: $color-brand;
       text-decoration: none;
     }
-  }
 }
