@@ -4,6 +4,7 @@
 
 .highlight {
   margin: 0;
+  margin-bottom: double($base-spacing-unit);
   background: #fff;
 
   .highlighter-rouge & {
