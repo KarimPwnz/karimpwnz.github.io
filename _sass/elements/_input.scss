@@ -3,7 +3,7 @@
 \*------------------------------------*/
 
 $input-border: $color-border;
-$input-border-focused: $color-text;
+$input-border-focused: $color-brand;
 
 input[type='text'],
 input[type='tel'],
@@ -21,9 +21,4 @@ textarea {
   font-size: $font-size-small;
 
   appearance: none;
-  transition: $global-transition;
-
-  @include attention() {
-    border: .5px solid $input-border-focused;
-  }
 }
