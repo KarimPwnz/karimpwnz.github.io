@@ -6,7 +6,9 @@ layout: default
   <div class='o-grid o-grid--center o-grid--column'>
     <div class='o-grid__col'>
       <article class='c-post'>
-        <h1 class='c-post__title u-text-center c-post__double-margin'>{{ page.title }}</h1>
+        <div class="c-post__head">
+          <h1 class='c-post__title u-text-center'>{{ page.title }}</h1>
+        </div>
         <div class='c-content'>
           {% include page-image.html %}
           {{ content }}

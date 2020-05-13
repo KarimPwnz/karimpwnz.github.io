@@ -6,6 +6,11 @@
   margin: 0 auto;
   max-width: 740px;
 
+  &__head {
+    margin-top: double($base-spacing-unit);
+    margin-bottom: triple($base-spacing-unit);
+  }
+
   &__title {
     font-size: triple($font-size-tiny);
     font-weight: $font-weight-bolder;
@@ -13,10 +18,6 @@
     @include mq($from: tablet) {
       font-size: triple($font-size-small);
     }
-  }
-
-  &__double-margin {
-    margin-bottom: double($base-spacing-unit);
   }
 
   &__date {
