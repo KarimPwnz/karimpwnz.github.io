@@ -4,6 +4,11 @@
 
 .o-wrapper {
   padding: double($base-spacing-unit) 0;
+
+  &--center-height {
+    display: flex;
+    align-items: center;
+  }
 }
 
 /**

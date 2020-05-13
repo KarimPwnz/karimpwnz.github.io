@@ -1,0 +1,17 @@
+---
+layout: default
+---
+
+<div class='o-wrapper o-wrapper--center-height'>
+  <div class='o-grid o-grid--center o-grid--column'>
+    <div class='o-grid__col'>
+      <article class='c-post u-text-center'>
+        <h1 class='c-post__title c-post__double-margin'>{{ page.title }}</h1>
+        <div class='c-content'>
+          {% include page-image.html %}
+          {{ content }}
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
