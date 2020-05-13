@@ -8,7 +8,7 @@ layout: default
   <meta http-equiv='Refresh' content='0; url={{ about_page[0].url }}'>
 {% else %}
   <div class='o-wrapper'>
-    <div class='o-grid'>
+    <div class='o-grid o-grid--column'>
       {% for post in paginator.posts %}
         {% include post-card.liquid %}
       {% endfor %}
