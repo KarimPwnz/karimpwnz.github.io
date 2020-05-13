@@ -14,6 +14,10 @@
     }
   }
 
+  &__double-margin {
+    margin-bottom: double($base-spacing-unit);
+  }
+
   &__date {
     position: relative;
     padding-top: $base-spacing-unit;
