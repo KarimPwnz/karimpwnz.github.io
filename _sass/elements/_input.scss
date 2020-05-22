@@ -2,19 +2,16 @@
   Elements > Inputs
 \*------------------------------------*/
 
-$input-border: $color-border;
-$input-border-focused: $color-brand;
-
-input[type='text'],
-input[type='tel'],
-input[type='number'],
-input[type='email'],
+input[type="text"],
+input[type="tel"],
+input[type="number"],
+input[type="email"],
 select,
 textarea {
   width: 100%;
   padding: $base-spacing-unit;
 
-  border: .5px solid $color-border;
+  border: 0.5px solid $color-border;
   border-radius: 0;
   outline: none;
   background-color: $color-white;

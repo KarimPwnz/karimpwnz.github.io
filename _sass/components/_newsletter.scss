@@ -7,13 +7,23 @@
   background-color: $bg-color-gray;
   margin-top: double($base-spacing-unit);
   text-align: center;
-}
 
-.newsletter h1 {
+  & h1 {
     font-size: triple($font-size-tiny);
-    font-weight: $font-weight-bolder
-}
+    font-weight: $font-weight-bolder;
+  }
 
-.newsletter button {
-    margin: $base-spacing-unit;
+  & input {
+    transition: $global-transition;
+    background-color: transparent;
+    border-color: $color-text;
+
+    &:focus {
+      background-color: $color-white;
+    }
+  }
+
+  & button {
+    margin-top: double($base-spacing-unit);
+  }
 }
