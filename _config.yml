@@ -26,6 +26,7 @@ sass:
 plugins:
   - jekyll-paginate
   - jekyll/tagging
+  - jekyll-target-blank
 
 include:
   - _pages
