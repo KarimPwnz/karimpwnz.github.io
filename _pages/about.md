@@ -5,6 +5,7 @@ title: About
 
 ### Contributions & Publications
 
+-   [The Story of the Million Dollar Bounty](https://edoverflow.com/2020/houseparty-hack/)
 -   [“CI Knew There Would Be Bugs Here” — Exploring Continuous Integration Services as a Bug Bounty Hunter](https://edoverflow.com/2019/ci-knew-there-would-be-bugs-here/)
 -   [Employee's GitHub Token Found In Travis CI Build Logs](https://hackerone.com/reports/496937)
 -   [Karim Rahal: Security Features of Firefox](https://blog.detectify.com/2019/10/03/karim-rahal-security-features-of-firefox/)
