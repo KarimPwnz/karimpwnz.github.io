@@ -11,4 +11,11 @@
       color: $color-brand;
     }
   }
+  .footnotes {
+    border-top: 4px solid $color-border;
+    padding-top: double($base-spacing-unit);
+  }
+  .reversefootnote {
+    font-family: $font-monospace;
+  }
 }
