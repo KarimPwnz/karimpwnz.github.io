@@ -20,6 +20,9 @@ pre {
   @include mq($until: tablet) {
     font-size: $font-size-small;
   }
+  @include mq($until: 380px) {
+    font-size: $font-size-tiny;
+  }
 }
 
 li code,
