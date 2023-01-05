@@ -15,8 +15,8 @@
     font-size: triple($font-size-tiny);
     font-weight: $font-weight-bolder;
     margin-bottom: $base-spacing-unit;
-    @include mq($from: tablet) {
-      font-size: triple($font-size-small);
+    @include mq($until: tablet) {
+      font-size: double($font-size-small);
     }
   }
 

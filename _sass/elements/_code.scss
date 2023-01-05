@@ -17,6 +17,9 @@ pre {
   white-space: pre-wrap;
   word-wrap: break-word;
   word-break: break-all;
+  @include mq($until: tablet) {
+    font-size: $font-size-small;
+  }
 }
 
 li code,
