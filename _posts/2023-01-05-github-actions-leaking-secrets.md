@@ -2,7 +2,7 @@
 layout: post
 title: "Leaking Secrets From GitHub Actions: Reading Files And Environment Variables, Intercepting Network/Process Communication, Dumping Memory"
 description: Documenting the inner-workings of the GitHub Actions runner, and exploring various ways of leaking secrets from vulnerable workflows. 
-tags: [GitHub Actions]
+tags: [GitHub Actions, Security]
 ---
 
 GitHub Actions is a CI/CD solution built into GitHub. It allow users to for example, deploy their repository's code on every push, or to automatically respond on new GitHub issues. Actions workflows are defined as YAML files placed into `.github/workflows`. Workflows are composed of jobs, which run asynchronously and in separate hosted machines;[^1] and jobs are broken into steps.
