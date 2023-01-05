@@ -19,16 +19,13 @@
 
   &__title {
     margin-bottom: half($font-size-base);
-    font-size: double($font-size-base);
+    font-size: $font-size-base;
     font-weight: $font-weight-bolder;
     transition: $global-transition;
-
-    @include mq($from: tablet) {
-      font-size: double($font-size-small);
-    }
-  }
+  } 
 
   &__excerpt {
+    margin-top: half($font-size-base);
     margin-bottom: half($font-size-base);
   }
 

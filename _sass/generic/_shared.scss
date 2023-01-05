@@ -22,6 +22,15 @@ fieldset {
  * Consistent indentation for lists.
  */
 dd, ol, ul {
-  list-style-position: inside;
   margin-left: $base-spacing-unit;
+}
+
+/**
+ * Fix errors with p tags in list after markdown parsing. 
+ */
+li p {
+  margin-top: double($base-spacing-unit);
+}
+li p:first-child {
+    display: inline;
 }
