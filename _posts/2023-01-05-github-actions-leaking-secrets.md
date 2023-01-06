@@ -5,7 +5,7 @@ description: Documenting the inner-workings of the GitHub Actions runner, and ex
 tags: [GitHub Actions, Security]
 ---
 
-GitHub Actions is a CI/CD solution built into GitHub. It allow users to for example, deploy their repository's code on every push, or to automatically respond on new GitHub issues. Actions workflows are defined as YAML files placed into `.github/workflows`. Workflows are composed of jobs, which run asynchronously and in separate hosted machines;[^1] and jobs are broken into steps.
+GitHub Actions is a CI/CD solution built into GitHub. It allows users to for example, deploy their repository's code on every push, or to automatically respond on new GitHub issues. Actions workflows are defined as YAML files placed into `.github/workflows`. Workflows are composed of jobs, which run asynchronously and in separate hosted machines;[^1] and jobs are broken into steps.
 
 [^1]: Jobs can be configured to run synchronously, but they will still run on separate machines.
 
@@ -51,11 +51,11 @@ Therefore, if a workflow job is vulnerable to command injection, we can leak its
 
 [^2]: The API key is hex-encoded using xxd because GitHub Actions automatically censors secret values from build logs. The censorship is nevertheless a good feature for users. In 2019, [others and I showed](https://edoverflow.com/2019/ci-knew-there-would-be-bugs-here/) that builds logs on Travis CI, another CI/CD solution, were exposing sensitive information due to lax censorship.
 
-However, not all workflows expose secrets through environment variables. What if the `${{ '{{' }} secrets.API_KEY }}` was directly referenced in the curl command? In addition, what if the curl command was in a different step than the command injection? Even more, what if no secrets are referenced—is there any impact? In this blogpost, I will document the inner-workings of the GitHub Actions runner (the code which executes workflow jobs). Then, I will explore various ways to leak secret values from GitHub Actions: reading files and environment variables, monitoring network/process communication, and dumping memory.
+However, not all workflows expose secrets through environment variables. What if the `${{ '{{' }} secrets.API_KEY }}` was directly referenced in the curl command? In addition, what if the curl command was in a different step than the command injection? Even more, what if no secrets were referenced—is there any impact? In this blogpost, I will document the inner-workings of the GitHub Actions runner (the code which executes workflow jobs). Then, I will explore various ways to leak secret values from GitHub Actions: reading files and environment variables, monitoring network/process communication, and dumping memory.
 
 ## GitHub Actions Runner — How Does It Work?
 
-The GitHub Actions runner has two main components: *Runner.Listener* and *Runner.Worker*. The _Runner.Listener_ listens for workflow jobs from a remote actions service. Once it receives a message, _Runner.Listener_ decrypts the job details and launches a *Runner.Worker* process to execute the job.
+The GitHub Actions runner has two main components: *Runner.Listener* and *Runner.Worker*. The _Runner.Listener_ listens for workflow jobs from a remote actions service. Once it receives a message, _Runner.Listener_ decrypts the job details and launches a *Runner.Worker* to execute the job.
 
 The process can be summarized with a diagram from the [official runner documentation](https://github.com/actions/runner/blob/main/docs/design/auth.md):
 
@@ -75,7 +75,7 @@ Self-hosted runners are those hosted by the user. Upon initial configuration, th
 
 The job messages are encrypted likely as a security measure against compromised access tokens. An attacker who has an access token but not the corresponding private key cannot decrypt job messages—they can only send the "Get message" request and receive encrypted job data. With the private key, the runner decrypts an AES encryption key and uses the key to decrypt job messages. (On the other hand, hosted runners receive a decrypted AES key and don't rely on RSA encryption; this is because their access token expires shortly after the job finishes.)
 
-GitHub only recommends using self-hosted runners on private repositories because configuring them securely is diffcult. However, to better understand how the GitHub Actions runner works, I will launch a self-hosted instance and analyze it through an HTTP proxy (Burp Suite).
+Self-hosted runners are difficult to configure securely, so GitHub only recommends them in private repositories. However, to better understand how the GitHub Actions runner works, I will launch a self-hosted instance and analyze it through an HTTP proxy (Burp Suite).
 
 ### Network Analysis
 
