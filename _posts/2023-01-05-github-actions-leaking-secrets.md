@@ -252,7 +252,7 @@ Nevertheless, one challenge remains: what security impact exists when a workflow
 
 [^8]: The token expires shortly after the job finishes, so a hacker must automate their exploit against the repository.
 
-There is an exceptions ofcourse. Organizations and repositories can enforce read-only permissions on the token, depending on the triggering event. But when that isn't the case, using the token provides a high security impact—writing to the repository.
+There is an exception ofcourse. Organizations and repositories can enforce read-only permissions on the token, depending on the triggering event. But when that isn't the case, using the token provides a high security impact—writing to the repository.
 
 ## Conclusion
 
