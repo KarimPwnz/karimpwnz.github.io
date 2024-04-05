@@ -47,7 +47,7 @@ jobs:
           curl https://web-hook-url/comment?issue_id=${{ '{{' }} github.event.issue.number }} -H "X-API-Key: $API_KEY" -d "comment_body=${{ '{{' }} github.event.comment.body }}"
 ```
 
-Therefore, if a workflow job is vulnerable to command injection, we can leak its secrets. In above example above, commenting `"; echo $API_KEY | xxd -p` [^2] will print the API key to the build logs.
+Therefore, if a workflow job is vulnerable to command injection, we can leak its secrets. In above example, commenting `"; echo $API_KEY | xxd -p` [^2] will print the API key to the build logs.
 
 [^2]: The API key is hex-encoded using xxd because GitHub Actions automatically censors secret values from build logs. The censorship is nevertheless a good feature for users. In 2019, [others and I showed](https://edoverflow.com/2019/ci-knew-there-would-be-bugs-here/) that builds logs on Travis CI, another CI/CD solution, were exposing sensitive information due to lax censorship.
 
