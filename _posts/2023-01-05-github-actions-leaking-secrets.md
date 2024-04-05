@@ -272,7 +272,7 @@ I would like to thank EdOverflow, Alvin Ng, Jeffrey Hertzog, and BBAC for helpin
 
 - GitHub Actions Runner [GitHub code repository]. GitHub Actions. [https://github.com/actions/runner](https://github.com/actions/runner)
 
-    The repositry which contains the code for the GitHub Actions runner. By reading the source code, I became familiar with the functionality of the runner. Furthermore, the documentation in the repository made the code clearer and is directly cited in this blogpost.
+    The repository which contains the code for the GitHub Actions runner. By reading the source code, I became familiar with the functionality of the runner. Furthermore, the documentation in the repository made the code clearer and is directly cited in this blogpost.
 
 - Ilgayev, Alex. _How We Discovered Vulnerabilities in CI/CD Pipelines of Popular Open-Source Projects_. Cycode, 2020. [https://cycode.com/github-actions-vulnerabilities/](https://cycode.com/github-actions-vulnerabilities/)
 
