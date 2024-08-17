@@ -3,15 +3,9 @@ layout: page
 title: About
 ---
 
-I am **security researcher** and **computer science student** at the [University of Southern California](https://www.usc.edu/). My experience is primarily in web-application bug bounties, having reported security issues to Google, Microsoft, Spotify, Grammarly, and more. 	
+I hack at Doyensec. Details of professinal experience on [Linkedin](https://www.linkedin.com/in/karimrahal/).
 
-<img style="display:block;margin:2.6rem auto;" src="https://user-images.githubusercontent.com/18099289/204139083-746bdfc3-844d-458f-8ba1-224937088d2d.png" height=50px>
-
-During the summer of 2022, I was an Associate Application Security Engineer at Bugcrowd, where I triaged security issues for customers like Dell Technologies, Pinterest, and 1Password.
-
-I've built security tools, [contributed browser code (Firefox)](https://bugzilla.mozilla.org/user_profile?user_id=645827), written browser extensions, and worked on other development projects.
-
-## Projects
+## Hobby Projects
 
 ### [sourcegraph-scripts](https://github.com/KarimPwnz/sourcegraph-scripts) (2022)
 
