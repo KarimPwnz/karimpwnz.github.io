@@ -3,7 +3,7 @@ layout: page
 title: About
 ---
 
-I hack at Doyensec. Details of professinal experience on [Linkedin](https://www.linkedin.com/in/karimrahal/).
+I hack at Doyensec. Details of professional experience on [Linkedin](https://www.linkedin.com/in/karimrahal/).
 
 ## Hobby Projects
 
